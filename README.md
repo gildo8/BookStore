@@ -1,5 +1,5 @@
 #Book Store
-WebSite to publish your books reviews, by leave your comment and Rate the book by Stars.
+Web Site to publish your books reviews, by leave your comment and Rate the book by Stars.
 Also you can add a Store that sells this book and using Google Maps to find that Store.
 
 This site implemented with MVC Design Pattern in C#.
