@@ -4,7 +4,7 @@ Also you can add a Store that sells this book and using Google Maps to find that
 
 This site implemented with MVC Design Pattern in C#.
 
-Using an external DB and SQL Query to work with that.
+Using an external DB and SQL queries to work with that.
 
 The View implemented with HTML and CSS.
 
