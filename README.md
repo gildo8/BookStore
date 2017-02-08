@@ -3,7 +3,9 @@ Web Site to publish your books reviews, by leave your comment and Rate the book 
 Also you can add a Store that sells this book and using Google Maps to find that Store.
 
 This site implemented with MVC Design Pattern in C#.
+
 Using an external DB and SQL Query to work with that.
+
 The View implemented with HTML and CSS.
 
 Other technologies were applied:
