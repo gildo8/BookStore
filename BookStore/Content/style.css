@@ -1,0 +1,522 @@
+﻿/* Makeshift CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Tell the browser to render HTML 5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+}
+input[value=Search] {
+    background: url(/Content/images/Search.png);
+    border: 0;
+    display: block;
+    height:50px;
+    width: 50px;
+    cursor:pointer;
+    font-weight:bold;
+}
+#title{
+    text-shadow : 2px 2px 5px #0047B2;
+}
+.titleFont {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:bold;
+    font-size:60px;
+
+    -webkit-transition:-webkit-transform 5s,width 5s,height 5s,font-size 5s;
+
+    -o-transition-property:width,height,-o-transform,font-size;
+    -o-transition-duration:1s,1s,1s,1s,1s,1s;
+
+    -moz-transition-property:width,height,-o-transform,font-size;
+    -moz-transition-duration:1s,1s,1s,1s,1s,1s;
+
+    transition-property:width,height,transform,font-size;
+    transition-duration:1s,1s,1s,1s,1s,1s;
+}
+
+    .titleFont:hover {
+        opacity: 1;
+        font-size:90px;
+    }   
+
+
+body {
+	margin: 0 auto;
+	padding: 22px 0;
+	width: 1250px;
+	font: 13px/22px Helvetica, Arial, sans-serif;
+	/*background: url(/Content/images/backround.jpg);*/
+    background-image: url(/Content/images/books.png),url(/Content/images/books.png), url(/Content/images/backround.jpg);
+    background-size:115px,115px,auto;
+    background-position: left top, right top , left top;
+    background-repeat: no-repeat, no-repeat,repeat;
+    padding: 15px;
+}
+
+h1, h2 {
+	font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 11px 0;
+}
+
+p {
+	padding-bottom: 22px;
+}
+
+
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+
+nav {
+	position:absolute;
+	left: 0;
+	width: 100%;
+    background: -webkit-linear-gradient(bottom right,#4ABDFF,#017DC4,#00A2FF); /* For Safari */
+	background: -o-linear-gradient(bottom right,#4ABDFF,#017DC4,#00A2FF); /* For Opera */
+	background: -moz-linear-gradient(bottom right,#4ABDFF,#017DC4,#00A2FF); /* For Firefix */
+	background: linear-gradient(to bottom right,#4ABDFF,#017DC4,#00A2FF); /* Standard syntax */
+
+}
+
+	nav ul {
+		margin: 0 auto;
+		width: 940px;
+		list-style: none;
+        text-align:center;
+	}
+			nav ul a {
+                margin-left: 22px;
+				padding-left: 33px;
+				text-align: left;
+				margin-right: 45px;
+				width: 140px;
+				font-size: 25px;
+				line-height: 44px;
+				text-align: center;
+				text-decoration:none;
+				color: yellow;
+			}
+
+			
+				nav ul a:hover {
+					color: #fff;
+				}
+/*------------------------------
+=NEW MAIN
+------------------------------*/
+
+#main1 { 
+    border-collapse: collapse;
+    padding: 5px;
+    text-align:center; 
+}
+
+    #main1 td.address,td.phone {
+        text-align:right;
+    }
+
+table#homecom tr:nth-child(even) {
+    border:1px solid black;
+    border-collapse:collapse;
+    background-color:#eee;
+}
+table#homecom tr:nth-child(odd) {
+    border:1px solid black;
+    border-collapse:collapse;
+    background-color:#fff;
+}
+table#homecom th {
+    padding-right:70px;
+    text-align:center;
+    background-color:black;
+    color:white;
+}
+
+td.details a{
+    text-decoration:none;
+    font-style:italic;
+    background:none;
+    font-size:14px;
+    color:#FF7519;
+}
+
+    td.details a:visited {
+    text-decoration:none;
+    font-style:italic;
+    background:none;
+    font-size:14px;
+    color:#FF7519;
+    }
+
+table#mainBook th.title1 {
+    font-size:30px;
+    font-style:italic;
+    font-weight:bold;
+}
+    table#mainBook th.content1 {
+    font-size:15px;
+    word-wrap:break-word;
+    }
+
+table#mainBook th.pubpri {
+    font-size:20px;
+}
+
+div.mainde a{
+    font-size:16px;
+     text-decoration:none;
+     font-weight:bold;
+     color:#E65C00;
+}
+
+    div.editBack a:visited {
+    text-decoration:none;
+     color:#52CC29;
+    }
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+#content {
+	display: table;
+    width:1295px;
+}
+	#mainContent {
+		display: table-cell;
+		width: 920px;
+		padding-right: 22px;
+        text-align:left;
+       
+	}
+ .gmap3{
+    border: 0px dashed #C0C0C0;
+    width: 500px;
+    height: 250px;
+}
+	
+	aside {
+		display: table-cell;
+		width: 300px;
+        margin-right:auto;
+      	}
+
+    
+table#bookList {
+    border:solid;
+    border-color:black;
+    padding:20px;
+}
+table#bookList .title {
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+}
+table#bookList .publisher {
+    text-align:center;
+    font-size:15px;
+    }
+table#bookList p {
+    font-weight:bold;
+    word-wrap:break-word;
+}
+
+table#bookList .price {
+    text-align:center;
+    font-weight:bold;
+    font-size:15px;
+}
+.detailsList a {
+    font-size:15px;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+
+.detailsList a:hover{
+    color:#0000ff;
+}
+.detailsList a:visited {
+    text-decoration:none;
+}
+
+div.listTitle {
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+}
+div.commentList {
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+}
+div.commentList a{
+    color:#009900;
+    text-decoration:none;
+}
+    div.commentList a:hover {
+        color:#4db84d;
+    }
+
+    /***********************
+        Comment List
+    ***********************/
+table#CommentList {
+    border:solid;
+    border-color:black;
+    padding:20px;
+}
+    table#CommentList .content {
+        text-align:center;
+    }
+
+        table#CommentList .content a {
+            text-decoration:none;
+            color:#668bc2;
+        }
+
+        table#CommentList .content a:hover {
+            text-decoration:underline;
+            color:#526f9b;
+        }
+
+
+.bookTitle {
+    text-align:center;
+    font-weight:bold;
+    font-size:30px;
+}
+
+.bookTitle a{
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+    font-size:20px;
+    color:#538A1C;
+}
+
+.bookTitle a:hover{
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+    color:#6BB26B;
+}
+table#CommentList .title {
+    text-align:center;
+    font-size:25px;
+    font-style:italic;
+}
+.publisher {
+    text-align:left;
+    font-size:15px;
+    }
+table#CommentList p {
+    font-weight:bold;
+    word-wrap:break-word;
+}
+
+table#CommentList .price {
+    text-align:center;
+    font-weight:bold;
+    font-size:15px;
+}
+.detailsList a {
+    font-size:15px;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+
+.detailsList a:hover{
+    color:#0000ff;
+}
+.detailsList a:visited {
+    text-decoration:none;
+}
+
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+aside section {
+	margin: 32px 0 0 1px;
+	padding: 11px 22px;
+	
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+}
+
+	aside section ul {
+		margin: 0 0 0 22px;
+		list-style: none;
+	}
+	
+		aside section ul li a {
+			display: block;
+			text-decoration: none;
+			color: #000;
+		}
+		
+			aside section ul li a:hover {
+				text-decoration: underline;
+			}
+
+.nav_navbar-nav_navbar-right a {
+   text-decoration:none;
+   font-weight:bold;
+   font-size:15px;
+}
+.nav_navbar-nav_navbar-right a:hover{
+    text-decoration:underline;
+}
+
+div.form-horizontal {
+    border:1px solid black;
+    border-radius:25px;
+    border-width:5px;
+    border-color:black;
+    text-align:center;
+    color:#3D7A99;
+}
+
+#addTitle {
+    font-size:30px;
+    text-align:center;
+    font-weight:bold;
+    font-family:Aharoni;
+    color:#52CC29;
+
+}
+
+div.editBack {
+    text-align:center;
+    font-size:15px;
+}
+
+    div.editBack a {
+    text-decoration:none;
+     font-weight:bold;
+     color:#52CC29;
+    }
+
+div.deleteEdit a{
+    text-decoration:none;
+    font-weight:bold;
+    color:#003d99;
+
+}
+    div.deleteEdit a:hover {
+        color:#668bc2;
+    }
+
+div.back a{
+    font-weight:bold;
+    text-decoration:none;
+    color:#0000ff;
+}
+
+    div.back a:hover {
+        color:#0000cc;
+    }
+
+div.orderComment {
+    font-size:18px;
+    text-align:center;
+}
+
+div.orderComment a{
+    text-decoration:none;
+    color:#3333D6;
+    font-weight:bold;
+}
+
+div.orderComment a:hover{
+    color:#0000cc;
+    text-decoration:underline;
+}
+
+
+/************************
+    PIE CHART
+************************/
+
+#canvas-holder {
+        width: 100%;
+        margin-top: 50px;
+        text-align: center;
+    }
+    #chartjs-tooltip {
+        opacity: 1;
+        position: absolute;
+        background: rgba(0, 0, 0, .7);
+        color: white;
+        padding: 3px;
+        border-radius: 3px;
+        -webkit-transition: all .1s ease;
+        transition: all .1s ease;
+        pointer-events: none;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    #chartjs-tooltip.below {
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+    #chartjs-tooltip.below:before {
+        border: solid;
+        border-color: #111 transparent;
+        border-color: rgba(0, 0, 0, .8) transparent;
+        border-width: 0 8px 8px 8px;
+        bottom: 1em;
+        content: "";
+        display: block;
+        left: 50%;
+        position: absolute;
+        z-index: 99;
+        -webkit-transform: translate(-50%, -100%);
+        transform: translate(-50%, -100%);
+    }
+    #chartjs-tooltip.above {
+        -webkit-transform: translate(-50%, -100%);
+        transform: translate(-50%, -100%);
+    }
+    #chartjs-tooltip.above:before {
+        border: solid;
+        border-color: #111 transparent;
+        border-color: rgba(0, 0, 0, .8) transparent;
+        border-width: 8px 8px 0 8px;
+        bottom: 1em;
+        content: "";
+        display: block;
+        left: 50%;
+        top: 100%;
+        position: absolute;
+        z-index: 99;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+/******************************
+    LINE CHART
+******************************/
+    #canvas-holder2 {
+        width: 50%;
+        margin: 20px 25%;
+    }
+   	.chartjs-tooltip-key{
+   		display:inline-block;
+   		width:10px;
+   		height:10px;
+   	}
+
+       table.Line{
+           padding-left:200px;
+       }
