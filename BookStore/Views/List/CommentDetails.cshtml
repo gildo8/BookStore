@@ -1,0 +1,52 @@
+﻿@model BookStore.Models.Comments
+
+@{
+    ViewBag.Title = "CommentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="listTitle">Details</div>
+
+<br />
+<table id="CommentList" style="width:100%">
+    <tr>
+        <td class="bookTitle">@Html.DisplayFor(model => model.BookList.Title)</td>
+        <td class="title">@Html.DisplayFor(model => model.CommentTitle) / @Html.DisplayFor(model => model.Writer)</td>
+        <td class="detailsList">
+            <center>
+                @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                { @Html.ActionLink("Edit", "Edit", new { id = Model.CommentsID })}
+            </center>
+        </td>
+    </tr>
+    <tr>
+        <td><center><img src="@Html.DisplayFor(model => model.BookList.Picture)" style="width :100px" alt=" picture" /></center></td>
+        <td class="content">@Html.DisplayFor(model => model.Content)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="content"></td>
+        <td class="price"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="content">
+            <b>Rating:</b> @{
+                if (Model.Rating < 1) { Console.WriteLine("No rating"); }
+                else
+                {
+                    for (int i = 0; i < Model.Rating; i++)
+                    {
+                        <img src="~/Content/images/yellowstar.png" style="width :25px" alt=" picture" />
+                    }
+                }
+            } , <b>Email:</b> @Html.DisplayFor(model => model.Email) , <b>Phone:</b> @Html.Raw("+972 ") @Html.DisplayFor(model => model.Phone)
+        </td>
+    </tr>
+</table>
+<div class="back"><center>
+@Html.ActionLink("Back to Book's Details", "Details", new { id = Model.ListID })
+    </center></div>
+ 
+

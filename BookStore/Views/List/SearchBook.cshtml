@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BookStore.Models.List>
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Search", "List", FormMethod.Get))
+{
+    <p>
+        Title: @Html.TextBox("searchString")<br />
+        Author: @Html.TextBox("bookAuthor")<br />
+        Price: @Html.TextBox("bookPrice")<br />
+        Genre: @Html.DropDownList("bookGenre", "All")<br />
+        Year: @Html.DropDownList("bookYear", "All")<br />
+        <input type="submit" value="Search" />
+    </p>
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BookStore.Models.List>
+
+@Styles.Render("~/Content/style.css")
+@Scripts.Render("~/bundles/modernizr")
+<!DOCTYPE html>
+<html>
+
+<body>
+    @foreach (var item in Model)
+    {
+        <table id="mainBook">
+            <tr>
+                <th class="title1" th colspan="3"><center>@Html.DisplayFor(modelItem => item.Title) / @Html.DisplayFor(modelItem => item.Author)</center></th>
+            </tr>
+            <tr>
+                <th class="content1" th colspan="2"><center>@Html.DisplayFor(modelItem => item.Content)</center></th>
+                <th th colspan="2"><img src="@Html.DisplayFor(modelItem => item.Picture)" style="width :200px" alt=" picture" /></th>
+            </tr>
+            <tr>
+                <th class="pubpri" colspan="3"><center>@Html.DisplayFor(modelItem => item.Genre) @Html.Raw(" , ") @Html.DisplayFor(modelItem => item.Year) <div class="mainde"> @Html.ActionLink("Details", "Details", "List", new { id = item.ListID }, new { id = item.ListID })</div></center></th>
+                <th class="pubpri" th colspan="1"><center>@Html.DisplayFor(modelItem => item.Publisher)<br /><u>@Html.DisplayFor(modelItem => item.Price)</u></center></th>
+            </tr>
+        </table>
+        <h3><b>@Html.DisplayFor(modelItem => item.Comments.Count) Comments:</b></h3>
+        foreach (var item1 in item.Comments)
+        {
+        <table id="homecom">
+            <tr>
+                <th>@Html.DisplayName("Writer")</th>
+                <th>@Html.DisplayName("Title")</th>
+                <th>@Html.DisplayName("Content")</th>
+                <th>@Html.DisplayName("Rating")</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item1.Writer)</td>
+                <td>@Html.DisplayFor(modelItem => item1.CommentTitle)</td>
+                <td>@Html.DisplayFor(modelItem => item1.Content)</td>
+                <td>@{
+                        if (item1.Rating < 1) { Console.WriteLine("No rating"); }
+                        else
+                        {
+                            for (int i = 0; i < item1.Rating; i++)
+                            {
+                                <img src="~/Content/images/yellowstar.png" style="width :25px" alt=" picture" />
+                            }
+                        }
+                    }
+                </td>
+                <td class="details"></td>
+            </tr>
+        </table>
+        }
+     }
+</body>
+
+</html>

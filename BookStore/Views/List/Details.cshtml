@@ -1,0 +1,70 @@
+﻿@model BookStore.Models.List
+
+<table id="CommentList" style="width:100%">
+    <tr>
+        <td><center>@Html.DisplayFor(model => model.Year)</center></td>
+        <td class="bookTitle">@Html.DisplayFor(model => model.Title) / @Html.DisplayFor(model => model.Author)</td>
+        <td class="detailsList">
+            <center>
+                @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                { @Html.ActionLink("Edit", "Edit", new { id = Model.ListID })}
+            </center>
+        </td>
+    </tr>
+    <tr>
+        <td><center><img src="@Html.DisplayFor(model => model.Picture)" style="width :100px" alt=" picture" /></center></td>
+        <td class="content">@Html.DisplayFor(model => model.Content)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="content"></td>
+        <td class="price"></td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model => model.Price)</td>
+        <td class="content">
+            <b>Rating:</b> @{
+                if (Model.Rating < 1) { Console.WriteLine("No rating"); }
+                else
+                {
+                    for (int i = 0; i < Model.Rating; i++)
+                    {
+                        <img src="~/Content/images/yellowstar.png" style="width :25px" alt=" picture" />
+                    }
+                }
+            } , <b>Publisher:</b> @Html.DisplayFor(model => model.Publisher) , <b>Genre:</b> @Html.DisplayFor(model => model.Genre)
+        </td>
+    </tr>
+</table>
+
+<h3><b>@Html.DisplayFor(model => model.Comments.Count) Comments:</b></h3>
+@foreach (var item1 in Model.Comments)
+{
+<table id="homecom">
+    <tr>
+        <th>@Html.DisplayName("Writer")</th>
+        <th>@Html.DisplayName("Title")</th>
+        <th>@Html.DisplayName("Content")</th>
+        <th>@Html.DisplayName("Rating")</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item1.Writer)</td>
+        <td>@Html.DisplayFor(modelItem => item1.CommentTitle)</td>
+        <td>@Html.DisplayFor(modelItem => item1.Content)</td>
+        <td>
+            @{
+            if (item1.Rating < 1) { Console.WriteLine("No rating"); }
+            else
+            {
+                for (int i = 0; i < item1.Rating; i++)
+                {
+                    <img src="~/Content/images/yellowstar.png" style="width :25px" alt=" picture" />
+                }
+            }
+        }
+    </td>
+    <td class="details">@Html.ActionLink("Details", "CommentDetails", new { id = item1.CommentsID })</td>
+</tr>
+</table>
+        }

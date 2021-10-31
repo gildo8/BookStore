@@ -1,0 +1,38 @@
+﻿@model BookStore.Models.Stores
+@Styles.Render("~/Content/style.css")
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&amp;language=en"></script>
+<script type="text/javascript" src="~/Scripts/gmap3.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#test").gmap3({
+            infowindow: {
+                address: "@Html.DisplayFor(model => model.Address)",
+                options: {
+                    content: "@Html.DisplayFor(model => model.Name) / @Html.DisplayFor(model => model.Address)",
+                },
+                callback: function () {
+                    $(this).gmap3('get').setZoom(17);
+                }
+            }
+        })
+    })
+</script>
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+<table id="main" style="width:100%">
+    <tr>
+        <td><b>Address: </b>@Html.DisplayFor(model => model.Address) /<b> Opening Time: </b>@Html.DisplayFor(model => model.OpeningTime)</td>
+    </tr>
+    <tr>
+        <td><b>Phone Number: </b>@Html.Raw("+972 ") @Html.DisplayFor(model => model.Phone) /<b> Email: </b> @Html.DisplayFor(model => model.Email)</td>
+    </tr>
+    <tr>
+        <td><div id="test" class="gmap3"></div></td>
+    </tr>
+    <tr>
+         <td><center><b><br /></b></center></td>
+</tr>
+</table>
+<div class="back"><center>@Html.ActionLink("Back to Stores", "Index")</center></div>

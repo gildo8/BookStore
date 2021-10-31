@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BookStore.Models.Stores>
+@Styles.Render("~/Content/style.css")
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&amp;language=en"></script>
+<script type="text/javascript" src="~/Scripts/gmap3.js"></script>
+<div class="listTitle">Stores</div>
+
+<p>
+<center><div class="commentList">
+@if (User.Identity.IsAuthenticated)
+   {
+        @Html.ActionLink("Add Store", "Create")
+   }
+</div></center>
+</p>
+<center>
+@using (Html.BeginForm("Index", "Stores", FormMethod.Get))
+{
+    <p>    
+        Address: @Html.TextBox("searchString")<br />
+        Opening Hours: @Html.DropDownList("storeHours", "All") <input type="submit" value="Search" />
+    </p>
+}   
+    </center>
+@foreach (var item in Model)
+{
+    <script type="text/javascript">
+    $(function () {
+
+        $("#test").gmap3({
+            marker: {
+                address: "@Html.DisplayFor(modelItem => item.Address)",
+                events: { // events trigged by markers
+                    click: function () {
+                        alert("@Html.DisplayFor(modelItem => item.Name) / @Html.DisplayFor(modelItem => item.Address)");
+                    }
+                },
+                callback: function () {
+                    $(this).gmap3('get').setZoom(09);
+                }
+            }
+        })
+    })
+</script>
+    <br />
+    <table id="bookList" style="width:100%">
+        <tr>
+            <td class="title">@Html.DisplayFor(modelItem => item.Name)</td>
+            <td class="content"><u>Address</u>: @Html.DisplayFor(modelItem => item.Address) </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="content"><u>Opening Time</u>: @Html.DisplayFor(modelItem => item.OpeningTime)</td>
+            <td class="detailsList">
+                <center>
+                    @Html.ActionLink("Details", "Details", new { id = item.StoresId }) @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                    {@Html.Raw(" / ") @Html.ActionLink("Edit", "Edit", new { id = item.StoresId })}
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="content"><u>Email</u>: @Html.DisplayFor(modelItem => item.Email)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><u>Phone</u>: @Html.Raw("+972 ")@Html.DisplayFor(modelItem => item.Phone)</td>
+        </tr>
+    </table>
+
+}
+
+<table id="main1" style="width:100%">
+    <tr>
+        <td class="map"><center><div id="test" class="gmap3"></div></center></td>
+    </tr>
+</table>
+    

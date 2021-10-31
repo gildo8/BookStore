@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BookStore.Models.List>
+
+@Styles.Render("~/Content/style.css")
+@Scripts.Render("~/bundles/modernizr")
+<div class="listTitle">List</div>
+
+<p><center><div class="commentList">@if(User.Identity.IsAuthenticated){
+    @Html.ActionLink("Add Book", "Create")
+@Html.Raw(" / ")}  @Html.ActionLink("Comments", "Index", "Comments")
+    </div>
+    </center>
+</p>
+
+<div class="orderComment">
+    Order By:
+    @Html.ActionLink("Book Name", "Index", new { sortOrder = ViewBag.BookSortParm })
+    @{
+
+        if (ViewBag.BookSortParm == "book_desc")
+        {
+            <img src="~/Content/images/arrow_up.png" ) />
+        }
+        else if (ViewBag.BookSortParm != "book_desc")
+        {
+            <img src="~/Content/images/arrow_down.png" ) />
+        }
+    }
+    @Html.Raw(" / ")
+    @Html.ActionLink("Year", "Index", new { sortOrder = ViewBag.YearSortParm })
+    @{
+
+        if (ViewBag.YearSortParm == "year_desc")
+        {
+            <img src="~/Content/images/arrow_up.png" ) />
+        }
+        else if (ViewBag.YearSortParm == "year")
+        {
+            <img src="~/Content/images/arrow_down.png" ) />
+        }
+    }
+    @Html.Raw(" / ")
+    @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm })
+    @{
+
+        if (ViewBag.PriceSortParm == "price_desc")
+        {
+            <img src="~/Content/images/arrow_up.png" ) />
+        }
+        else if (ViewBag.PriceSortParm == "price")
+        {
+            <img src="~/Content/images/arrow_down.png" ) />
+        }
+    }
+</div>
+@foreach (var item in Model)
+{
+    <br />
+    <table id="bookList" style="width:100%">
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Year)</td>
+            <td class="title">@Html.DisplayFor(modelItem => item.Title) / @Html.DisplayFor(modelItem => item.Author)</td>
+            <td class="detailsList">
+                <center>
+                    @Html.ActionLink("Details", "Details", new { id = item.ListID }) @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                    {@Html.Raw(" / ") @Html.ActionLink("Edit", "Edit", new { id = item.ListID })}
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="content"><p>@Html.DisplayFor(modelItem => item.Content)</p></td>
+            <td><img src="@Html.DisplayFor(modelItem => item.Picture)" style="width :100px" alt=" picture" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="publisher">@Html.DisplayFor(modelItem => item.Publisher) / @Html.DisplayFor(modelItem => item.Genre)</td>
+            <td class="price">@Html.DisplayFor(modelItem => item.Price)</td>
+        </tr>
+    </table>
+}

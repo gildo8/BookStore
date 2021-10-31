@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BookStore.ViewModels.ListViewModels>
+
+<table>
+    <tr>
+        <th>
+            Genre:
+        </th>
+        <th>
+            Times:
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+               @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountBook)
+            </td>
+        </tr>
+    }
+</table>

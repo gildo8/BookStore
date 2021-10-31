@@ -1,0 +1,172 @@
+﻿@model BookStore.Models.List
+@Styles.Render("~/Content/style.css")
+@Scripts.Render("~/bundles/modernizr")
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+
+<head>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <center><h3><b>Books By Years:</b></h3></center>
+
+    <div id="canvas-holder2">
+        <canvas id="chart2" width="100" height="100" />
+    </div>
+
+
+    <center><h3><b>Genres:</b></h3></center>
+    <div id="canvas-holder">
+        <canvas id="chart-area2" width="400" height="400" />
+    </div>
+    <div id="chartjs-tooltip"></div>
+
+    <script>
+    Chart.defaults.global.customTooltips = function (tooltip) {
+        // Tooltip Element
+        var tooltipEl = $('#chartjs-tooltip');
+        // Hide if no tooltip
+        if (!tooltip) {
+            tooltipEl.css({
+                opacity: 0
+            });
+            return;
+        }
+        // Set caret Position
+        tooltipEl.removeClass('above below');
+        tooltipEl.addClass(tooltip.yAlign);
+        // Set Text
+        tooltipEl.html(tooltip.text);
+        // Find Y Location on page
+        var top;
+        if (tooltip.yAlign == 'above') {
+            top = tooltip.y - tooltip.caretHeight - tooltip.caretPadding;
+        } else {
+            top = tooltip.y + tooltip.caretHeight + tooltip.caretPadding;
+        }
+        // Display, position, and set styles for font
+        tooltipEl.css({
+            opacity: 1,
+            left: tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
+            top: tooltip.chart.canvas.offsetTop + top + 'px',
+            fontFamily: tooltip.fontFamily,
+            fontSize: tooltip.fontSize,
+            fontStyle: tooltip.fontStyle,
+        });
+    };
+    var pieData = [{
+        value: @ViewBag.gK ,
+        color: "#000066",
+        highlight: "#333385",
+        label: "Kids"
+    }, {
+        value: @ViewBag.gS,
+        color: "#0000FF",
+        highlight: "#3333FF",
+        label: "Sport"
+    }, {
+        value: @ViewBag.gB,
+        color: "#00A6CF",
+        highlight: "#33B8D9",
+        label: "Biography"
+    }, {
+        value: @ViewBag.gR,
+        color: "#2EB82E",
+        highlight: "#58C658",
+        label: "Romantic"
+    }, {
+        value: @ViewBag.gA,
+        color: "#FFFF00",
+        highlight: "#FFFF33",
+        label: "Action"
+    },  {
+        value: @ViewBag.gHi,
+            color: "#FF0000",
+            highlight: "#FF3333",
+            label: "History"
+        },
+        {
+            value: @ViewBag.gC,
+            color: "#003300",
+            highlight: "#4D704D",
+            label: "Classics"
+        },
+        {
+            value: @ViewBag.gD,
+            color: "#4700B2",
+            highlight: "#6C33C1",
+            label: "Drama"
+        }];
+
+        var ctx2 = document.getElementById("chart-area2").getContext("2d");
+        window.myPie = new Chart(ctx2).Pie(pieData);
+    </script>
+
+
+    <!------------- LINE CHART   ---------------->
+
+
+    <script>
+        Chart.defaults.global.pointHitDetectionRadius = 1;
+        Chart.defaults.global.customTooltips = function(tooltip) {
+            var tooltipEl = $('#chartjs-tooltip');
+            if (!tooltip) {
+                tooltipEl.css({
+                    opacity: 0
+                });
+                return;
+            }
+            tooltipEl.removeClass('above below');
+            tooltipEl.addClass(tooltip.yAlign);
+            var innerHtml = '';
+            for (var i = tooltip.labels.length - 1; i >= 0; i--) {
+                innerHtml += [
+                    '<div class="chartjs-tooltip-section">',
+                    '	<span class="chartjs-tooltip-key" style="background-color:' + tooltip.legendColors[i].fill + '"></span>',
+                    '	<span class="chartjs-tooltip-value">' + tooltip.labels[i] + '</span>',
+                    '</div>'
+                ].join('');
+            }
+            tooltipEl.html(innerHtml);
+            tooltipEl.css({
+                opacity: 1,
+                left: tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
+                top: tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
+                fontFamily: tooltip.fontFamily,
+                fontSize: tooltip.fontSize,
+                fontStyle: tooltip.fontStyle,
+            });
+        };
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+        };
+        var lineChartData = {
+            labels: ["1900-1920", "1921-1940", "1941-1960", "1961-1980", "1981-2000", "2001-2015"],
+            datasets: [
+             {
+                 label: "My Second dataset",
+                 fillColor: "rgba(151,187,205,0.2)",
+                 strokeColor: "rgba(151,187,205,1)",
+                 pointColor: "rgba(151,187,205,1)",
+                 pointStrokeColor: "#fff",
+                 pointHighlightFill: "#fff",
+                 pointHighlightStroke: "rgba(151,187,205,1)",
+                 data: [@ViewBag.g1,@ViewBag.g2, @ViewBag.g3, @ViewBag.g4, @ViewBag.g5, @ViewBag.g6]
+             }
+            ]
+        };
+        var ctx3 = document.getElementById("chart2").getContext("2d");
+        window.myLine = new Chart(ctx3).Line(lineChartData, {
+            responsive: true
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BookStore.Models.Comments>
+<div class="listTitle">Comments</div>
+
+<p>
+<center><div class="commentList">
+@if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Add Comment", "Create")
+    } 
+</div></center>
+ </p>
+<div class="orderComment">
+Order By:
+    @Html.ActionLink("Book Name", "Index", new { sortOrder = ViewBag.BookSortParm })
+@{
+       
+    if (ViewBag.BookSortParm == "name_desc")
+    {
+        <img src="~/Content/images/arrow_up.png") />
+    }
+    else if (ViewBag.BookSortParm != "name_desc")
+    {
+        <img src="~/Content/images/arrow_down.png" ) />
+    }
+}
+@Html.Raw(" / ")
+@Html.ActionLink("Rating", "Index", new { sortOrder = ViewBag.RatingSortParm })
+    @{
+
+        if (ViewBag.RatingSortParm == "rating_desc")
+        {
+            <img src="~/Content/images/arrow_up.png" ) />
+        }
+        else if (ViewBag.RatingSortParm == "rating")
+        {
+            <img src="~/Content/images/arrow_down.png" ) />
+        }
+}
+</div>
+    @foreach (var item in Model)
+    {
+        <table id="CommentList" style="width:100%">
+            <tr>
+                <td class="bookTitle">@Html.ActionLink(item.BookList.Title,"Details","List",new{id = item.BookList.ListID},new{id = item.BookList.ListID})</td>
+                <td class="title">@Html.DisplayFor(modelItem => item.CommentTitle) / @Html.DisplayFor(modelItem => item.Writer)</td>
+                <td class="detailsList">
+                    <center>
+                        @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                        { @Html.ActionLink("Edit", "Edit", new { id = item.CommentsID })}
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td><center><img src="@Html.DisplayFor(modelItem => item.BookList.Picture)" style="width :100px" alt=" picture" /></center></td>
+                <td class="content">@Html.DisplayFor(modelItem => item.Content)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="content"></td>
+                <td class="price"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="content">
+                    <b>Rating:</b> @{
+        if (item.Rating < 1) { Console.WriteLine("No rating"); }
+        else
+        {
+            for (int i = 0; i < item.Rating; i++)
+            {
+                <img src="~/Content/images/yellowstar.png" style="width :25px" alt=" picture" />
+            }
+        }
+                    } , <b>Email:</b> @Html.DisplayFor(modelItem => item.Email) , <b>Phone:</b> @Html.Raw("+972 ") @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+            </tr>
+        </table>
+    }
+
+
+

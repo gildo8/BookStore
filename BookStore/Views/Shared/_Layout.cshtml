@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Book Store</title>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+<link rel="icon" href="~/Content/images/book.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div id="title">
+        <center><h1 class="titleFont">Book Store</h1></center>
+            </div>
+    </header>
+    <nav>
+        <!-- Navigation -->
+        <ul>
+            @Html.ActionLink("Home", "Index", "Home")
+            @Html.ActionLink("List", "Index", "List")
+            @Html.ActionLink("Stores", "Index", "Stores")
+            @Html.ActionLink("Search", "SearchBook", "List")
+            @Html.ActionLink("Statistics", "BookStatistics", "List")
+        </ul>
+    </nav>
+    <div id="content">
+        <div id="mainContent">
+            <br />
+            @RenderBody()
+        </div>
+        <aside>
+            <section>
+                <ul>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </section>
+            <section>
+                <video width="320" height="320" controls>
+                    <source src="~/Content/Video/The_Joy_of_Books.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                
+                </section>
+        </aside>
+    </div>
+</body>
+</html>
